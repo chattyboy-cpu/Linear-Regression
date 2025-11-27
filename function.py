@@ -17,8 +17,7 @@ def train_model(data):
 
     # Replace 'T' (trace precipitation) with 0.0 and convert to numeric
     data = data.replace('T', 0.0)
-    for col in data.columns:
-        data[col] = pd.to_numeric(data[col], errors='coerce')
+    data = data.apply(pd.to_numeric, errors='coerce')
 
     data = data.dropna()
 
